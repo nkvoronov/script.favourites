@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.favourites" name="Favourites script" version="5.0.3" provider-name="ronie|`Black">
+<addon id="script.favourites" name="Favourites script" version="6.0.0" provider-name="ronie|`Black">
 	<requires>
 		<import addon="xbmc.python" version="2.12.0"/>
 	</requires>
@@ -36,7 +36,7 @@
 		<description lang="da">Henter elementer fra din XBMC-favoritter til at fylde Hjemmemenu/undermenu med brugerbestemte knapper.</description>
 		<description lang="de">Greift Eintrag von deinen XBMC Favoriten, um Home-Menu / -Untermenü mit Spezial-Buttons zu füllen.</description>
 		<description lang="el">Χρησιμοποιεί αντικείμενα από τα αγαπημένα σας του XBMC για να συμπληρώσει τα προσαρμοσμένα πλήκτρα μενού/υπομενού της Αρχικής Οθόνης</description>
-		<description lang="en">Fetches item from your xbmc favourites to populate Home menu/submenu with custom buttons.</description>
+		<description lang="en">Fetches item from your Kodi favourites to populate Home menu/submenu with custom buttons.</description>
 		<description lang="es">Usar ítems de tus favoritos de XBMC para crear menús y submenús personalizados</description>
 		<description lang="es_AR">Obtiene medios de sus favoritos en XBMC para enriquecer su menu inicio y sub carpetas con botones personalizados</description>
 		<description lang="fr">Récupère l'élément depuis les favoris xbmc pour remplir le menu/sous-menu de l'accueil avec des boutons personnalisés.</description>
@@ -85,7 +85,7 @@
 		<language></language>
 		<platform>all</platform>
 		<forum>http://forum.xbmc.org/showthread.php?tid=114671</forum>
-		<source>https://code.google.com/p/ronie/source/</source>
+		<source>https://github.com/ronie/script.favourites</source>
 		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
 		<website></website>
 		<email></email>
