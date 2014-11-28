@@ -1,6 +1,6 @@
 # Credits to CF2009 for the original favourites script.
 
-import os, sys
+import os, sys, re
 import xbmc, xbmcgui, xbmcaddon, xbmcvfs
 from xml.dom.minidom import parse
 
@@ -129,6 +129,11 @@ class MainGui( xbmcgui.WindowXMLDialog ):
             log( "### position: %s" % num )
             if num > 0:
                 fav_path = self.fav_list.getSelectedItem().getProperty( "Path" )
+                result = re.search('"(.*?)"', fav_path)
+                if result:
+                    fav_abspath = result.group(0)
+                else:
+                    fav_abspath = ''
                 fav_label = self.fav_list.getSelectedItem().getLabel()
                 if 'playlists/music' in fav_path or 'playlists/video' in fav_path:
                     retBool = xbmcgui.Dialog().yesno(xbmc.getLocalizedString(559), __language__(32000))
@@ -143,6 +148,7 @@ class MainGui( xbmcgui.WindowXMLDialog ):
                     if ( keyboard.isConfirmed() ):
                         fav_label = keyboard.getText()
                 xbmc.executebuiltin( 'Skin.SetString(%s,%s)' % ( '%s.%s' % ( self.property, "Path", ), fav_path.decode('string-escape'), ) )
+                xbmc.executebuiltin( 'Skin.SetString(%s,%s)' % ( '%s.%s' % ( self.property, "List", ), fav_abspath.decode('string-escape'), ) )
                 xbmc.executebuiltin( 'Skin.SetString(%s,%s)' % ( '%s.%s' % ( self.property, "Label", ), fav_label, ) )
                 fav_icon = self.fav_list.getSelectedItem().getProperty( "Icon" )
                 if fav_icon:
@@ -151,6 +157,7 @@ class MainGui( xbmcgui.WindowXMLDialog ):
                 self.close()
             else:
                 xbmc.executebuiltin( 'Skin.Reset(%s)' % '%s.%s' % ( self.property, "Path", ) )
+                xbmc.executebuiltin( 'Skin.Reset(%s)' % '%s.%s' % ( self.property, "List", ) )
                 xbmc.executebuiltin( 'Skin.Reset(%s)' % '%s.%s' % ( self.property, "Label", ) )
                 xbmc.executebuiltin( 'Skin.Reset(%s)' % '%s.%s' % ( self.property, "Icon", ) )
                 xbmc.sleep(300)
