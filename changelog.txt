@@ -1,3 +1,6 @@
+v7.0.0
+- add cancel button
+
 v6.0.3
 - cleanup
 

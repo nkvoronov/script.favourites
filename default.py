@@ -89,9 +89,11 @@ class MainGui(xbmcgui.WindowXMLDialog):
         except:
             print_exc()
             self.fav_list = self.getControl(3)
+        self.cancel = self.getControl(7)
 
         self.getControl(5).setVisible(False)
         self.getControl(1).setLabel(xbmc.getLocalizedString(1036))
+        self.getControl(7).setLabel(xbmc.getLocalizedString(222))
 
         self.fav_list.addItem(xbmcgui.ListItem(LANGUAGE(32001), iconImage="DefaultAddonNone.png"))
 
@@ -162,6 +164,8 @@ class MainGui(xbmcgui.WindowXMLDialog):
                 xbmc.executebuiltin('Skin.Reset(%s)' % '%s.%s' % (self.property, "Icon",))
                 xbmc.sleep(300)
                 self.close()
+        elif controlID == 7:
+            self.close()
 
     def onFocus(self, controlID):
         pass
