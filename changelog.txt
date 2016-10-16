@@ -1,3 +1,6 @@
+v7.1.0
+- use seleect dialog
+
 v7.0.0
 - add cancel button
 
