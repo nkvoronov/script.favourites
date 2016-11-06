@@ -1,5 +1,8 @@
+v7.1.1
+- clear properties
+
 v7.1.0
-- use seleect dialog
+- use select dialog
 
 v7.0.0
 - add cancel button
