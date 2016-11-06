@@ -52,6 +52,15 @@ class Main:
 
     def _set_properties(self, listing):
         self.WINDOW = xbmcgui.Window(10000)
+        oldcount = 0
+        try:
+            oldcount = int(self.WINDOW.getProperty("favourite.count"))
+        except:
+            pass
+        for idx_count in range(1,oldcount + 1):
+            self.WINDOW.clearProperty("favourite.%d.path" % (idx_count))
+            self.WINDOW.clearProperty("favourite.%d.name" % (idx_count))
+            self.WINDOW.clearProperty("favourite.%d.thumb" % (idx_count))
         self.WINDOW.setProperty("favourite.count", str(len(listing)))
         for count, favourite in enumerate(listing):
             name = favourite.attributes[ 'name' ].nodeValue
