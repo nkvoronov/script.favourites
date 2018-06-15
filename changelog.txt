@@ -1,3 +1,6 @@
+v7.1.2
+- move repo to gitlab
+
 v7.1.1
 - clear properties
 

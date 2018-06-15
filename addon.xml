@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.favourites" name="Favourites script" version="7.1.1" provider-name="ronie, `Black">
+<addon id="script.favourites" name="Favourites script" version="7.1.2" provider-name="ronie, `Black">
 	<requires>
 		<import addon="xbmc.python" version="2.25.0"/>
 	</requires>
@@ -109,6 +109,6 @@
 		<forum>http://forum.kodi.tv/showthread.php?tid=114671</forum>
 		<website></website>
 		<email></email>
-		<source>https://github.com/ronie/script.favourites</source>
+		<source>https://gitlab.com/ronie/script.favourites</source>
 	</extension>
 </addon>
