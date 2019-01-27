@@ -106,7 +106,7 @@
 		<language></language>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
-		<forum>http://forum.kodi.tv/showthread.php?tid=114671</forum>
+		<forum>https://forum.kodi.tv/showthread.php?tid=114671</forum>
 		<source>https://gitlab.com/ronie/script.favourites</source>
 		<assets>
 			<icon>resources/icon.png</icon>
