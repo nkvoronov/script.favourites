@@ -7,14 +7,12 @@ from xml.dom.minidom import parse
 ADDON        = xbmcaddon.Addon()
 ADDONID      = ADDON.getAddonInfo('id')
 ADDONVERSION = ADDON.getAddonInfo('version')
-CWD          = ADDON.getAddonInfo('path').decode("utf-8")
+CWD          = ADDON.getAddonInfo('path')
 LANGUAGE     = ADDON.getLocalizedString
 
 def log(txt):
-    if isinstance (txt,str):
-        txt = txt.decode("utf-8")
-    message = u'%s: %s' % (ADDONID, txt)
-    xbmc.log(msg=message.encode("utf-8"), level=xbmc.LOGDEBUG)
+    message = '%s: %s' % (ADDONID, txt)
+    xbmc.log(msg=message, level=xbmc.LOGDEBUG)
 
 class Main:
     def __init__(self):
@@ -39,7 +37,7 @@ class Main:
 
     def _read_file(self):
         # Set path
-        self.fav_file = xbmc.translatePath('special://profile/favourites.xml').decode("utf-8")
+        self.fav_file = xbmc.translatePath('special://profile/favourites.xml')
         # Check to see if file exists
         if xbmcvfs.exists(self.fav_file):
             found = True
@@ -86,16 +84,18 @@ class Main:
 
     def _select(self, items):
         listitems = []
-        listitems.append(xbmcgui.ListItem(LANGUAGE(32001), iconImage="DefaultAddonNone.png"))
+        clear = xbmcgui.ListItem(LANGUAGE(32001))
+        clear.setArt({'icon':'DefaultAddonNone.png'})
+        listitems.append(clear)
         for item in items:
             listitem = xbmcgui.ListItem(item.attributes[ 'name' ].nodeValue)
             fav_path = item.childNodes [ 0 ].nodeValue
             try:
                 if 'playlists/music' in fav_path or 'playlists/video' in fav_path:
-                    listitem.setIconImage("DefaultPlaylist.png")
+                    listitem.setArt({'icon':'DefaultPlaylist.png'})
                     listitem.setProperty("Icon", "DefaultPlaylist.png")
                 else:
-                    listitem.setIconImage(item.attributes[ 'thumb' ].nodeValue)
+                    listitem.setArt({'icon':item.attributes['thumb'].nodeValue})
                     listitem.setProperty("Icon", item.attributes[ 'thumb' ].nodeValue)
             except:
                 pass
@@ -129,8 +129,8 @@ class Main:
                 keyboard.doModal()
                 if (keyboard.isConfirmed()):
                     fav_label = keyboard.getText()
-            xbmc.executebuiltin('Skin.SetString(%s,%s)' % ('%s.%s' % (self.PROPERTY, "Path",), fav_path.decode('string-escape'),))
-            xbmc.executebuiltin('Skin.SetString(%s,%s)' % ('%s.%s' % (self.PROPERTY, "List",), fav_abspath.decode('string-escape'),))
+            xbmc.executebuiltin('Skin.SetString(%s,%s)' % ('%s.%s' % (self.PROPERTY, "Path",), fav_path,))
+            xbmc.executebuiltin('Skin.SetString(%s,%s)' % ('%s.%s' % (self.PROPERTY, "List",), fav_abspath,))
             xbmc.executebuiltin('Skin.SetString(%s,%s)' % ('%s.%s' % (self.PROPERTY, "Label",), fav_label,))
             fav_icon = listitems[num].getProperty("Icon")
             if fav_icon:
