@@ -37,7 +37,7 @@ class Main:
 
     def _read_file(self):
         # Set path
-        self.fav_file = xbmc.translatePath('special://profile/favourites.xml')
+        self.fav_file = xbmcvfs.translatePath('special://profile/favourites.xml')
         # Check to see if file exists
         if xbmcvfs.exists(self.fav_file):
             found = True
